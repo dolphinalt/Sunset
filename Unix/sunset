@@ -1,0 +1,40 @@
+. src/utils.sh
+colors
+
+echo $1
+echo $2
+
+if [ $# == 0 ] ; then
+    utInfo
+elif [ $1 == "--Binary" ] || [ $1 == "-b" ]; then
+    ./src/binary.sh
+elif [ $1 == "--Crypto" ] || [ $1 == "-c" ]; then
+    ./src/crypto.sh
+elif [ $1 == "--credits" ] || [ $1 == "-c" ]; then
+    ./src/credits.sh
+elif [ $1 == "--Forensics" ] || [ $1 == "-f" ]; then
+    ./src/forensics.sh
+elif [ $1 == "--General" ] || [ $1 == "-g" ]; then
+    ./src/general.sh
+elif [ $1 == "--Help" ] || [ $1 == "-h" ]; then
+    ./src/help.sh
+elif [ $1 == "--Init" ] || [ $1 == "-i" ]; then
+    if [ $2 == "--Reset" ] || [ $2 == "-R" ]; then
+        Reset="True"
+    else
+        Reset="False"
+    fi
+    export Reset
+    echo $Reset
+    ./src/init.sh
+elif [ $1 == "--Password" ] || [ $1 == "-p" ]; then
+    ./src/password.sh
+elif [ $1 == "--Reverse" ] || [ $1 == "-r" ]; then
+    ./src/reverse.sh
+elif [ $1 == "--Stego" ] || [ $1 == "-s" ]; then
+    ./src/stego.sh
+elif [ $1 == "--Web" ] || [ $1 == "-w" ]; then
+    ./src/web.sh
+else
+    utInfo
+fi
